@@ -2,11 +2,17 @@
 $(function(){
     var maxDate = getFormat(18);
     var minDate = getFormat(55);
-    localStorage.setItem('userList', []);
+    refereshTable();
     $('#dobDate').attr('max', maxDate);
     $('#dobDate').attr('min', minDate);
+    
+// $("#dobDate").datepicker({
+//     changeMonth: true,
+//     changeYear: true,
+//     minDate: minDate,
+//     maxDate: maxDate
+//   });
 });
-
 function getFormat(age){
     var dtToday = new Date();
     var month = dtToday.getMonth() + 1;
@@ -54,15 +60,36 @@ function register(event){
     userDetails.push(detail);
     localStorage.setItem('userList', JSON.stringify(userDetails));
 }
+
+function refereshTable(){
+let userDetails = localStorage.getItem('userList');
+let tableItems = JSON.parse(userDetails);
+let table = document.getElementById("myTable");
+   
+if(tableItems.length > 0){
+for(t=0;t<tableItems.length;t++){
+let row = table.insertRow(-1);
+let c1 = row.insertCell(0);
+    let c2 = row.insertCell(1);
+    let c3 = row.insertCell(2);
+    let c4 = row.insertCell(3);
+    let c5 = row.insertCell(4);
+    c1.innerText = tableItems[t].name;
+    c2.innerText = tableItems[t].email;
+    c3.innerText = tableItems[t].password;
+    c4.innerText = tableItems[t].dobDate;
+    c5.innerText = tableItems[t].terms;
+}
+}
+}
 function checkValidation(pattern, event, errorMsg){
     let value = event.target.value;
-    let regex = new RegExp(pattern);
-    let ele = document.getElementById(event.target.id)
-    if(event.target.value && !regex.test(value) && event.target.id != 'email'){
-        ele.setCustomValidity(errorMsg);
-    }else if(event.target.value && !regex.test(value) && event.target.id === 'email'){
-        ele.setCustomValidity(`Please include an '@' in the email address. "${value}" is missing an '@'`);
-    }else{
-        ele.setCustomValidity('')
-    }
+let ele = document.getElementById(event.target.id)
+if(value.match(/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/)){
+ele.setCustomValidity('')
+}
+else
+{
+ ele.setCustomValidity(`Please include an '@' in the email address. "${value}" is missing an '@'`);
+}
 }

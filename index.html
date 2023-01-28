@@ -23,11 +23,8 @@
                         name="email" 
                         value="" 
                         placeholder="Enter email" 
-                        required 
-                        oninvalid="checkValidation('^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$', event, '')"
                         onkeypress="checkValidation('^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$', event, '')"
-                        pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
-                    >
+                        required>
                 </div>
                 <div class="input-wrapper">
                     <label for="fname">Password:</label>
@@ -48,9 +45,10 @@
                         id="dobDate" 
                         name="date" 
                         placeholder="dd/mm/yyyy"
+                        min="getFormat(18)"
+                        max="getFormat(55)"
                         value=""
-                        required
-                    >
+                        required>
                 </div>
                 <div>
                     <label for="terms">
