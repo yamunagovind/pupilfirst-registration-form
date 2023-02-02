@@ -23,7 +23,9 @@
                         name="email" 
                         value="" 
                         placeholder="Enter email" 
-                        onkeypress="checkValidation('^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$', event, '')"
+                        oninvalid="checkValidation('email')"
+                        oninput="setCustomValidity('')"
+                        pattern="^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$"
                         required>
                 </div>
                 <div class="input-wrapper">
@@ -55,7 +57,7 @@
                         <input id="terms" type="checkbox" required oninvalid="(event)=>{event.setCustomValidity('Please tick this box if you want to proceed.')}">Accept Terms & Conditions
                     </label>
                 </div>
-                <button type="submit" class="submit-button" value="Submit" (onclick)="register()">Submit</button>
+                <button type="submit" class="submit-button" value="Submit">Submit</button>
             </form>
         </div>
         <div class="card table-card">
