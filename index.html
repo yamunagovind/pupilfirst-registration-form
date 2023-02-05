@@ -9,7 +9,7 @@
         <div class="card">
             <div class="registerform-content">Registration Form</div>
             
-            <form class="form-content" id="registrationForm" onsubmit="register(event)"> 
+            <form class="form-content" id="registrationForm" onsubmit="return register(event)"> 
                 <div class="input-wrapper">
                     <label for="fname">Name:</label>
                     <input class="form-input" type="text" id="name" name="name" value="" placeholder="Enter full name" required>
@@ -25,7 +25,6 @@
                         placeholder="Enter email" 
                         oninvalid="checkValidation('email')"
                         oninput="setCustomValidity('')"
-                        pattern="^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$"
                         required>
                 </div>
                 <div class="input-wrapper">
@@ -66,13 +65,6 @@
             </div>
             <div>
                 <table id="myTable">
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Password</th>
-                        <th>dob</th>
-                        <th>accepted terms?</th>
-                    </tr>
                 </table>
             </div>
         </div>

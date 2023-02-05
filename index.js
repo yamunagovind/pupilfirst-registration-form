@@ -46,15 +46,27 @@ async function register(event){
         userDetails.push(detail);
         localStorage.setItem('userList', JSON.stringify(userDetails));
         refereshTable();
-        formEl.reset();
+        // formEl.reset();
     }
+    return isValid;
 }
 
 function refereshTable(){
     let userDetails = localStorage.getItem('userList');
     let tableItems = JSON.parse(userDetails);
     let table = document.getElementById("myTable");
-    table.innerHTML = '';
+    table.innerHTML = ' ';
+    let row = table.insertRow(-1);
+    let h1 = row.insertCell(0);
+    let h2 = row.insertCell(1);
+    let h3 = row.insertCell(2);
+    let h4 = row.insertCell(3);
+    let h5 = row.insertCell(4);
+    h1.innerText = 'Name';
+    h2.innerText = 'Email';
+    h3.innerText = 'Password';
+    h4.innerText = 'dob';
+    h5.innerText = 'accepted terms?';
     if(tableItems && tableItems.length > 0){
         for(t=0;t<tableItems.length;t++){
             let row = table.insertRow(-1);

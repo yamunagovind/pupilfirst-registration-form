@@ -63,6 +63,10 @@ table{
     width: 100%;
     border-collapse: collapse;
 }
+table tbody tr:nth-child(1) td{
+    font-weight: bold;
+    border: none;
+}
  td {
     border: 1px solid rgb(216 216 216);
     text-align: center;
